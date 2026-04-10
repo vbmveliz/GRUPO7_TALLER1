@@ -1,4 +1,4 @@
-package CASO_2;
+package CASO_3;
 
 public class Resolucion {
 
