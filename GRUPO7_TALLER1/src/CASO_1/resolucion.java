@@ -8,14 +8,14 @@ public class resolucion {
         while (true) {
 
             // Pedir números
-            String num1Str = JOptionPane.showInputDialog("Ingresa el primer número:");
-            String num2Str = JOptionPane.showInputDialog("Ingresa el segundo número:");
+            String n1 = JOptionPane.showInputDialog("Ingresa el primer número:");
+            String n2 = JOptionPane.showInputDialog("Ingresa el segundo número:");
 
             double num1, num2;
 
             try {
-                num1 = Double.parseDouble(num1Str);
-                num2 = Double.parseDouble(num2Str);
+                num1 = Double.parseDouble(n1);
+                num2 = Double.parseDouble(n2);
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Ingresa solo números");
                 continue;
