@@ -1,107 +1,108 @@
 package CASO_1;
 
-import javax.swing.JOptionPane;
+import java.util.Scanner;
 
 public class resolucion {
 
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
         boolean continuar = true;
 
         while (continuar) {
 
-            Double num1 = leerNumero("Ingrese el primer número:");
+            Double num1 = leerNumero(sc, "Ingrese el primer número:");
             if (num1 == null) break;
 
-            Double num2 = leerNumero("Ingrese el segundo número:");
+            Double num2 = leerNumero(sc, "Ingrese el segundo número:");
             if (num2 == null) break;
 
-           
-            String[] opciones = {"Sumar", "Restar", "Multiplicar", "Dividir", "Salir"};
+            System.out.println("\nSeleccione una operación:");
+            System.out.println("1. Sumar");
+            System.out.println("2. Restar");
+            System.out.println("3. Multiplicar");
+            System.out.println("4. Dividir");
+            System.out.println("5. Salir");
 
-            int seleccion = JOptionPane.showOptionDialog(
-                    null,
-                    "Seleccione una operación",
-                    "Calculadora",
-                    JOptionPane.DEFAULT_OPTION,
-                    JOptionPane.INFORMATION_MESSAGE,
-                    null,
-                    opciones,
-                    opciones[0]
-            );
+            int opcion = -1;
 
-            if (seleccion == -1 || seleccion == 4) {
-                JOptionPane.showMessageDialog(null, "Programa finalizado 👋");
+            try {
+                opcion = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Opción inválida");
+                continue;
+            }
+
+            if (opcion == 5) {
+                System.out.println("Programa finalizado");
                 break;
             }
 
             double resultado = 0;
 
             try {
-                switch (seleccion) {
-                    case 0:
+                switch (opcion) {
+                    case 1:
                         resultado = sumar(num1, num2);
                         break;
-                    case 1:
+                    case 2:
                         resultado = restar(num1, num2);
                         break;
-                    case 2:
+                    case 3:
                         resultado = multiplicar(num1, num2);
                         break;
-                    case 3:
+                    case 4:
                         resultado = dividir(num1, num2);
                         break;
                     default:
-                        JOptionPane.showMessageDialog(null, "Opción no válida");
+                        System.out.println("Opción no válida");
                         continue;
                 }
 
-                JOptionPane.showMessageDialog(null, "Resultado: " + resultado);
+                System.out.println("Resultado: " + resultado);
 
             } catch (ArithmeticException e) {
-                JOptionPane.showMessageDialog(null, "Error: División por cero");
+                System.out.println("Error: División por cero");
                 continue;
             }
 
-            int respuesta = JOptionPane.showConfirmDialog(
-                    null,
-                    "¿Desea realizar otra operación?",
-                    "Continuar",
-                    JOptionPane.YES_NO_OPTION
-            );
+            System.out.println("\n¿Desea realizar otra operación? (s/n): ");
+            String respuesta = sc.nextLine();
 
-            if (respuesta != JOptionPane.YES_OPTION) {
+            if (!respuesta.equalsIgnoreCase("s")) {
                 continuar = false;
-                JOptionPane.showMessageDialog(null, "Programa finalizado 👋");
+                System.out.println("Programa finalizado");
             }
         }
+
+        sc.close();
     }
 
-    public static Double leerNumero(String mensaje) {
+
+    public static Double leerNumero(Scanner sc, String mensaje) {
 
         while (true) {
 
-            String input = JOptionPane.showInputDialog(null, mensaje);
+            System.out.println(mensaje);
+            String input = sc.nextLine();
 
             if (input == null) {
                 return null;
             }
 
-           
             if (input.trim().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "No puede estar vacío");
+                System.out.println("No puede estar vacío");
                 continue;
             }
 
             try {
                 return Double.parseDouble(input);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(null, "Ingrese un número válido");
+                System.out.println("Ingrese un número válido");
             }
         }
     }
 
-    // Métodos
     public static double sumar(double a, double b) {
         return a + b;
     }
