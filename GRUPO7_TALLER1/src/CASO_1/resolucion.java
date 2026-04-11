@@ -78,15 +78,14 @@ public class resolucion {
 
                 if (!respuesta.equalsIgnoreCase("s")) {
                     continuar = false;
-                    System.out.println("Programa finalizado 👋");
+                    System.out.println("Programa finalizado ");
                 }
             }
         }
 
         sc.close();
     }
-
-    // 🔥 MÉTODO PARA LEER NÚMEROS
+    
     public static Double leerNumero(Scanner sc, String mensaje) {
 
         while (true) {
