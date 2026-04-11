@@ -7,7 +7,7 @@ public class Contador {
     // Variable estática compartida por todos los objetos
     private static int contador = 0;
 
-    // Constructor: incrementa el contador cada vez que se crea un objeto
+    
     public Contador() {
         contador++;
         System.out.println("Objeto creado : " + contador);
