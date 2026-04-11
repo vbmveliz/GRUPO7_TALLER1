@@ -16,7 +16,6 @@ public class resolucion {
 
             Double num2 = leerNumero(sc, "Ingrese el segundo número:");
             if (num2 == null) break;
-
             System.out.println("\nSeleccione una operación:");
             System.out.println("1. Sumar");
             System.out.println("2. Restar");
