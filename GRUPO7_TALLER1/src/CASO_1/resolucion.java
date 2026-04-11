@@ -16,6 +16,7 @@ public class resolucion {
 
             Double num2 = leerNumero(sc, "Ingrese el segundo número:");
             if (num2 == null) break;
+
             System.out.println("\nSeleccione una operación:");
             System.out.println("1. Sumar");
             System.out.println("2. Restar");
@@ -32,62 +33,65 @@ public class resolucion {
                 continue;
             }
 
-            if (opcion == 5) {
-                System.out.println("Programa finalizado");
-                break;
-            }
-
             double resultado = 0;
 
             try {
                 switch (opcion) {
                     case 1:
                         resultado = sumar(num1, num2);
+                        System.out.println("Resultado: " + resultado);
                         break;
+
                     case 2:
                         resultado = restar(num1, num2);
+                        System.out.println("Resultado: " + resultado);
                         break;
+
                     case 3:
                         resultado = multiplicar(num1, num2);
+                        System.out.println("Resultado: " + resultado);
                         break;
+
                     case 4:
                         resultado = dividir(num1, num2);
+                        System.out.println("Resultado: " + resultado);
                         break;
+
+                    case 5:
+                        System.out.println("Saliendo del programa...");
+                        continuar = false;
+                        break;
+
                     default:
                         System.out.println("Opción no válida");
                         continue;
                 }
 
-                System.out.println("Resultado: " + resultado);
-
             } catch (ArithmeticException e) {
-                System.out.println("Error: División por cero");
+                System.out.println("Error: No se puede dividir entre cero");
                 continue;
             }
 
-            System.out.println("\n¿Desea realizar otra operación? (s/n): ");
-            String respuesta = sc.nextLine();
+            if (continuar) {
+                System.out.print("\n¿Desea realizar otra operación? (s/n): ");
+                String respuesta = sc.nextLine();
 
-            if (!respuesta.equalsIgnoreCase("s")) {
-                continuar = false;
-                System.out.println("Programa finalizado");
+                if (!respuesta.equalsIgnoreCase("s")) {
+                    continuar = false;
+                    System.out.println("Programa finalizado 👋");
+                }
             }
         }
 
         sc.close();
     }
 
-
+    // 🔥 MÉTODO PARA LEER NÚMEROS
     public static Double leerNumero(Scanner sc, String mensaje) {
 
         while (true) {
-
-            System.out.println(mensaje);
+            System.out.print(mensaje + " ");
             String input = sc.nextLine();
-
-            if (input == null) {
-                return null;
-            }
 
             if (input.trim().isEmpty()) {
                 System.out.println("No puede estar vacío");
@@ -102,6 +106,7 @@ public class resolucion {
         }
     }
 
+    // MÉTODOS
     public static double sumar(double a, double b) {
         return a + b;
     }
