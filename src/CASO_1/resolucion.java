@@ -3,17 +3,7 @@ package CASO_1;
 import java.util.Scanner;
 
 public class resolucion {
-<<<<<<< HEAD
-	public static void main(String[] args) {
-		
-		
-		
-		
-		
-	}
-	
-	
-=======
+
 
     public static void main(String[] args) {
 
@@ -135,5 +125,4 @@ public class resolucion {
         }
         return a / b;
     }
->>>>>>> branch 'master' of https://github.com/vbmveliz/GRUPO7_TALLER1.git
 }

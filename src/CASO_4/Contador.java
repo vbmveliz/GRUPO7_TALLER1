@@ -17,7 +17,6 @@ public class Contador {
     public static int getContador() {
         return contador;
     }
-
     // Main para probar
     public static void main(String[] args) {
         Contador obj1 = new Contador();
